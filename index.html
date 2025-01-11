@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanNext</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Plan<span>N</span>ext</h1>
+        <div class="im"> <img src="assets/img/perfil.svg" alt="Imagen de perfil"> </div>
+    </header>
+
+    <div class="main">
+        <aside>
+            <a href="/">Lista</a>
+            <a href="/">Nuevo</a>
+        </aside>
+        <main>
+            <h2>Crear nueva tarea</h2>
+            <form class="form">
+                <label for="title">Título</label>
+                <input type="text" name="title" id="title" required>
+                <label for="description">Descripción</label>
+                <textarea name="description" id="description" required></textarea>
+                <label for="date">Fecha</label>
+                <input type="date" name="date" id="date" required>
+                <label for="time">Hora</label>
+                <input type="time" name="time" id="time" required>
+                <label for="duracion">Duracion</label>
+                <input type="number" name="duracion" id="duracion" required>
+                <select name="min-hora" id="min-hora">
+                    <option value="minuto">minuto/s</option>
+                    <option value="hora">Hora/s</option>
+                </select>
+                <button type="submit">Crear</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
