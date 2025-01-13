@@ -1,4 +1,4 @@
-import { adicionarMeta } from "../memoria.js";
+import { adicionarMeta } from "./../memoria/memoria.js";
 import renderEtiqueta from "./render.js";
 
 function generarIdUnico() {
