@@ -108,3 +108,19 @@ button {
     border: 2px solid #9754CB;
     outline: none;
 }
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+    .main {
+        flex-direction: column;
+    }
+    .main aside {
+        width: 100%;
+        height: auto;
+    }
+    .main main {
+        width: 100%;
+    }
+}
