@@ -1,6 +1,6 @@
-export default function renderEtiqueta(etiqueta, clase) {
+export default function renderEtiqueta(etiqueta, clase = '') {
     const etiquetaRender = document.createElement(etiqueta);
-    if(clase !== '') {
+    if (clase) {
         etiquetaRender.classList.add(clase);
     }
     return etiquetaRender;
