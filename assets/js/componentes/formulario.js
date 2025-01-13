@@ -1,3 +1,4 @@
+import { navegar } from "../navegar/navegar.js";
 import { adicionarMeta } from "./../memoria/memoria.js";
 import renderEtiqueta from "./render.js";
 
@@ -58,6 +59,7 @@ export default function formulario() {
       tiempo: selectTiempo.value,
       periodo: selectPeriodo.value,
     });
+    navegar("lista");
   });
 
   formulario.append(
