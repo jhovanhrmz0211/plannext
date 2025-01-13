@@ -1,3 +1,5 @@
+import { eliminarMeta } from "../memoria/memoria.js";
+import { navegar } from "../navegar/navegar.js";
 import renderEtiqueta from "./render.js";
 
 export default function renderMetas(listaMetas) {
@@ -14,6 +16,8 @@ listaMetas.forEach((meta) => {
     button.textContent = "Eliminar";
     button.addEventListener("click", () => {
         console.log("Eliminar", meta.id);
+        eliminarMeta(meta.id);
+        navegar("lista");
     });
     divMeta.appendChild(h3);
     divMeta.appendChild(p);
