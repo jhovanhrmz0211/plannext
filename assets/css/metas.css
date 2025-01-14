@@ -1,20 +1,19 @@
+/* GOALS LIST */
 .main main .metas {
-    width: 80%;
-    margin: 20px auto;
-    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
     display: flex;
-    overflow: hidden;
     flex-direction: column;
+    gap: 15px;
 }
+
 .main main .metas .meta {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    display: flex;
-    overflow: hidden;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+    padding: 15px;
     background-color: #fff;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

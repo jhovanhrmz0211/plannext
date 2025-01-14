@@ -12,7 +12,3 @@ export function navegar(vista) {
         contenedor.appendChild(formulario());
     }
 }
-// Ruta por defecto cuando la página se carga
-document.addEventListener('DOMContentLoaded', () => {
-    navegar('lista'); // Al cargar la página, mostramos la vista de 'lista' por defecto
-});

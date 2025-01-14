@@ -15,3 +15,8 @@ links.forEach(link => {
 document.addEventListener("DOMContentLoaded", () => {
     cargarDesdeLocalStorage(); // Carga las metas desde localStorage
 });
+
+// Ruta por defecto cuando la página se carga
+document.addEventListener('DOMContentLoaded', () => {
+    navegar('lista'); // Al cargar la página, mostramos la vista de 'lista' por defecto
+});

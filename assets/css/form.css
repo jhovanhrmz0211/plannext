@@ -1,25 +1,27 @@
+/* FORM STYLES */
 .main main .form {
-    width: 80%;
-    margin: 5px auto;
-    padding: 5px;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto 0;
+    padding: 15px;
     background-color: #fff;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.main main .form input, textarea, select {
+
+.main main .form input,
+textarea,
+select {
     width: 100%;
-    margin: 6px 0;
-    padding: 7px;
-    font-family: 'Roboto';
-    font-size: 1.2em;
-    font-weight: 400;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    color: #333;
-    border: 1px solid #8f8e8e;
 }
-.main main .form input:focus, textarea:focus, select:focus {
-    border: 2px solid #9754CB;
+
+.main main .form input:focus,
+textarea:focus,
+select:focus {
+    border-color: #9754CB;
     outline: none;
 }

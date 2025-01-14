@@ -51,6 +51,10 @@ export default function formulario() {
 
   buttonGuardar.addEventListener("click", (e) => {
     e.preventDefault();
+    if(!inputMeta.value || !inputFechaInicio.value || !inputDuracion.value) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
     adicionarMeta({
       id: generarIdUnico(),
       meta: inputMeta.value,
