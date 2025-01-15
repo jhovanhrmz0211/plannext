@@ -1,4 +1,4 @@
-}import { navegar } from "../navegar/navegar.js";
+import { navegar } from "../navegar/navegar.js";
 import { adicionarMeta } from "./../memoria/memoria.js";
 import renderEtiqueta from "./render.js";
 

@@ -1,4 +1,4 @@
-export default function modal() {
+export default function modal(id) {
     
-    return alert("Hola mundo");
+    return alert("Hola mundo ", id);
 }
