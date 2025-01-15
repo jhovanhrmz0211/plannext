@@ -17,5 +17,5 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarDesdeLocalStorage();
 
     // Navega a la vista de 'lista' por defecto
-    navegar('lista');
+    navegar('nuevo');
 });

@@ -7,6 +7,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.main main .form h2 {
+    margin-bottom: 0.9rem;
+}
 
 .main main .form input,
 textarea,
@@ -25,3 +28,31 @@ select:focus {
     border-color: #9754CB;
     outline: none;
 }
+/* Contenedor principal para los elementos que quieres ajustar */
+.form-group {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no caben */
+    align-items: center;
+    justify-content: center;
+  }
+  .form-groups {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilos para los elementos dentro del contenedor */
+  .form-group label,
+  .form-group input,
+  .form-group select {
+    flex: 1 1 35%; /* Ocupa 48% del ancho disponible, crece y encoge proporcionalmente */
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos específicos para los campos de fecha (si es necesario) */
+  .form-group input[type="date"] {
+    width: 100%; /* Si quieres que ocupen todo el ancho de su contenedor */
+  }
