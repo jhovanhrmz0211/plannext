@@ -1,5 +1,6 @@
 import { eliminarMeta } from "../memoria/memoria.js";
 import { navegar } from "../navegar/navegar.js";
+// import modal from "./modalmeta.js";
 import renderEtiqueta from "./render.js";
 
 export default function renderMetas(listaMetas) {
@@ -24,9 +25,13 @@ listaMetas.forEach((meta) => {
         eliminarMeta(meta.id);
         navegar("lista");
     });
-    divMeta.appendChild(h3);
-    divMeta.appendChild(p);
-    divMeta.appendChild(button);
+    // divMeta.addEventListener("click", () => {
+    //     // console.log("Editar", meta.id);
+    //     // localStorage.setItem("id", meta.id);
+    //     // navegar("editar");
+    //     modal();
+    // });
+    divMeta.append(h3,p,button);
 divMetas.appendChild(divMeta);
 });
 
