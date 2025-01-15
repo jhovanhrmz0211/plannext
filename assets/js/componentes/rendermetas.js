@@ -17,7 +17,7 @@ listaMetas.forEach((meta) => {
     const p = renderEtiqueta("p");
     const small = renderEtiqueta("small");
     h3.textContent = meta.meta;
-    p.textContent = `${meta.duracion} ${meta.tiempo} / ${small.textContent= meta.periodo}`;
+    p.textContent = `${meta.duracion} ${meta.selectDuracion} al ${small.textContent= meta.selectRepeticiones}`;
     const button = renderEtiqueta("button");
     button.textContent = "Eliminar";
     button.addEventListener("click", () => {
