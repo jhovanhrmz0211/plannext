@@ -1,9 +1,12 @@
 import { actualizarMeta } from "../memoria/memoria.js";
 import { navegar } from "../navegar/navegar.js";
 import renderEtiqueta from "./render.js";
+import { crearInput, crearLabel } from "./renderLabIn.js";
 
 export default function modal(objetivo) {
-    const { id, meta, fechainicio, fechafin, repeticiones, selectRepeticiones, duracion, selectDuracion, totalrepeticiones } = objetivo;
+  const minHora = ["minutos", "horas"];
+  const periodo = ["día", "semana", "mes", "año"];
+  const { id, meta, fechainicio, fechafin, repeticiones, selectRepeticiones, duracion, selectDuracion, totalrepeticiones } = objetivo;
 
     // Crear contenedor del modal
     const modalContainer = renderEtiqueta("div", "modal-container");
@@ -17,38 +20,32 @@ export default function modal(objetivo) {
     const formulario = renderEtiqueta("form");
 
     // Input para la meta
-    const labelMeta = renderEtiqueta("label");
-    labelMeta.textContent = "Meta:";
-    const inputMeta = renderEtiqueta("input");
-    inputMeta.type = "text";
+    const divFecha = renderEtiqueta("div", "form-group");
+    const labelMeta = crearLabel("Meta");
+    const inputMeta = crearInput("text");
     inputMeta.value = meta;
 
     // Fecha de inicio
-    const labelFechaInicio = renderEtiqueta("label");
-    labelFechaInicio.textContent = "Fecha de inicio:";
-    const inputFechaInicio = renderEtiqueta("input");
-    inputFechaInicio.type = "date";
-    inputFechaInicio.value = fechainicio;
+    const labelFechaIn = crearLabel("Fecha de inicio");
+    const inputFechaIn = crearInput("date");
+    inputFechaIn.value = fechainicio;
 
     // Fecha de fin
-    const labelFechaFin = renderEtiqueta("label");
-    labelFechaFin.textContent = "Fecha de fin:";
-    const inputFechaFin = renderEtiqueta("input");
-    inputFechaFin.type = "date";
+    const labelFechaFi = crearLabel("fecha de fin");
+    const inputFechaFin = crearInput("date");
     inputFechaFin.value = fechafin;
+    divFecha.append(labelMeta,inputMeta,labelFechaIn,inputFechaIn,labelFechaFi,inputFechaFin)
 
     // Repeticiones
-    const labelRepeticiones = renderEtiqueta("label");
-    labelRepeticiones.textContent = "Repeticiones:";
-    const inputRepeticiones = renderEtiqueta("input");
-    inputRepeticiones.type = "number";
+    const divRepeticiones = renderEtiqueta("div", "form-group");
+    const labelRepeticiones = crearLabel("Repeticiones");
+    const inputRepeticiones = crearInput("number");
     inputRepeticiones.value = repeticiones;
+    const labelAl = crearLabel("al");
 
     // Select de repeticiones
-    const labelSelectRepeticiones = renderEtiqueta("label");
-    labelSelectRepeticiones.textContent = "Periodo de repeticiones:";
     const selectPeriodo = renderEtiqueta("select");
-    ["día", "semana", "mes", "año"].forEach((opcion) => {
+    periodo.forEach((opcion) => {
         const option = renderEtiqueta("option");
         option.value = opcion;
         option.textContent = opcion;
@@ -57,19 +54,16 @@ export default function modal(objetivo) {
         }
         selectPeriodo.appendChild(option);
     });
-
+    
     // Duración
-    const labelDuracion = renderEtiqueta("label");
-    labelDuracion.textContent = "Duración:";
-    const inputDuracion = renderEtiqueta("input");
-    inputDuracion.type = "number";
+    const divmin = renderEtiqueta("div", "form-groups");
+    const labelDuracion = crearLabel("Duración");
+    const inputDuracion = crearInput("number");
     inputDuracion.value = duracion;
 
     // Select de duración (cambio de nombre para evitar conflicto)
-    const labelSelectDuracion = renderEtiqueta("label");
-    labelSelectDuracion.textContent = "Unidad de tiempo:";
     const selectDuracionField = renderEtiqueta("select"); // Cambié el nombre aquí
-    ["minutos", "horas"].forEach((opcion) => {
+    minHora.forEach((opcion) => {
         const option = renderEtiqueta("option");
         option.value = opcion;
         option.textContent = opcion;
@@ -78,6 +72,7 @@ export default function modal(objetivo) {
         }
         selectDuracionField.appendChild(option); // Usando el nuevo nombre
     });
+    divmin.append(inputDuracion,selectDuracionField)
 
     // Total de repeticiones
     const labelTotalRepeticiones = renderEtiqueta("label");
@@ -85,18 +80,19 @@ export default function modal(objetivo) {
     const inputTotalRepeticiones = renderEtiqueta("input");
     inputTotalRepeticiones.type = "number";
     inputTotalRepeticiones.value = totalrepeticiones;
+    divRepeticiones.append(labelRepeticiones,inputRepeticiones,labelAl,selectPeriodo,labelDuracion,divmin)
 
     // Botón de guardar
     const botonGuardar = renderEtiqueta("button");
     botonGuardar.type = "button";
-    botonGuardar.textContent = "Guardar Cambios";
+    botonGuardar.textContent = "Guardar";
 
     // Evento para guardar los cambios
     botonGuardar.addEventListener("click", () => {
         const metaEditada = {
             id,
             meta: inputMeta.value,
-            fechainicio: inputFechaInicio.value,
+            fechainicio: inputFechaIn.value,
             fechafin: inputFechaFin.value,
             repeticiones: inputRepeticiones.value,
             selectRepeticiones: selectPeriodo.value,
@@ -124,14 +120,9 @@ export default function modal(objetivo) {
 
     // Añadir elementos al formulario
     formulario.append(
-        labelMeta, inputMeta,
-        labelFechaInicio, inputFechaInicio,
-        labelFechaFin, inputFechaFin,
-        labelRepeticiones, inputRepeticiones,
-        labelSelectRepeticiones, selectPeriodo,
-        labelDuracion, inputDuracion,
-        labelSelectDuracion, selectDuracionField, // Aquí uso el nuevo nombre
-        labelTotalRepeticiones, inputTotalRepeticiones,
+        divFecha,
+        divRepeticiones,// a qui
+        divRepeticiones,
         botonGuardar, botonCerrar
     );
 

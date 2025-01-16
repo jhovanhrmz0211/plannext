@@ -1,31 +1,13 @@
 import { adicionarMeta } from "../memoria/memoria.js";
 import { navegar } from "../navegar/navegar.js";
 import renderEtiqueta from "./render.js";
+import { crearInput, crearLabel } from "./renderLabIn.js";
+import { opcionesSelect } from "./renderSelect.js";
 
 function generarIdUnico() {
   return `meta-${Date.now()}`;
 }
 
-const opcionesSelect = (opciones) => {
-  const select = renderEtiqueta("select");
-  opciones.forEach((opcion) => {
-    const option = renderEtiqueta("option");
-    option.value = opcion;
-    option.textContent = opcion;
-    select.appendChild(option);
-  });
-  return select;
-};
-const crearLabel = (labelText) => {
-  const label = renderEtiqueta("label");
-  label.textContent = labelText;
-  return label;
-}
-const crearInput = (tipo) => {
-  const input = renderEtiqueta("input");
-  input.type = tipo;
-  return input;
-}
 export default function formulario() {
   const minHora = ["minutos", "horas"];
   const periodo = ["día", "semana", "mes", "año"];
