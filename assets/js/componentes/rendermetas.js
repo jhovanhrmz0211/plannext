@@ -27,10 +27,11 @@ listaMetas.forEach((meta) => {
     });
     divMeta.addEventListener("click", () => {
         // console.log("Editar", meta.id);
-        const ids = localStorage.setItem("id", meta.id);
+        // const ids = localStorage.setItem("id", meta.id);
         // navegar("editar");
-        console.log(meta.id);
-        modal(ids);
+        // const metaObj = JSON.stringify(meta)
+        console.log(`Meta traida desde renderMetas${meta.id}`);
+        modal(meta);
     });
     divMeta.append(h3,p,button);
 divMetas.appendChild(divMeta);
