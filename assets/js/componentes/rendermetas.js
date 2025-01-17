@@ -12,26 +12,26 @@ if(listaMetas.length === 0) {
     h4.textContent = "No hay metas para mostrar";
     divMetas.appendChild(h4);
 }
+// import { barra } from "./barra.js";
+
 listaMetas.forEach((meta) => {
-    const divMeta = renderEtiqueta("div", "meta");
-    const h3 = renderEtiqueta("h3");
-    const p = renderEtiqueta("p");
-    const small = renderEtiqueta("small");
-    h3.textContent = meta.meta;
-    p.textContent = `${meta.duracion} ${meta.selectDuracion} al ${small.textContent= meta.selectRepeticiones}`;
-    const progreso = barra(meta.repeticiones, meta.totalrepeticiones);
-    
-    divMeta.addEventListener("click", () => {
-        // console.log("Editar", meta.id);
-        // const ids = localStorage.setItem("id", meta.id);
-        // navegar("editar");
-        // const metaObj = JSON.stringify(meta)
-        console.log(`Meta traida desde renderMetas${meta.id}`);
-        modal(meta);
-    });
-    divMeta.append(h3,p,progreso);
-divMetas.appendChild(divMeta);
+  const divMeta = renderEtiqueta("div", "meta");
+  const h3 = renderEtiqueta("h3");
+  const p = renderEtiqueta("p");
+  const small = renderEtiqueta("small");
+  h3.textContent = meta.meta;
+  p.textContent = `${meta.duracion} ${meta.selectDuracion} al ${small.textContent = meta.selectRepeticiones}`;
+
+  // Agrega la barra de progreso
+  const progreso = barra(meta.repeticiones, meta.totalrepeticiones);
+
+  divMeta.addEventListener("click", () => {
+    modal(meta);
+  });
+  divMeta.append(h3, p, progreso);
+  divMetas.appendChild(divMeta);
 });
+
 
 return divMetas;
 }

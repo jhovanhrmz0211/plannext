@@ -1,15 +1,88 @@
 import renderEtiqueta from "./render.js";
 
-export function barra(rep,toRep) {
-    const span = renderEtiqueta("span", "barra-pro");
+export function barra(rep, toRep) {
+    const div = renderEtiqueta("div", "progress-circle");
+  
+    // Crear el texto del progreso
+    const span = renderEtiqueta("span", "progress-text");
     span.textContent = `${rep}/${toRep}`;
-    const progreso = (rep / toRep);
-    if(progreso <= 0.5) {
-        span.style.borderColor = "red";
-    } else if(progreso < 1) {
-        span.style.borderColor ="orange";
+  
+    // Crear el SVG
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "progress-ring");
+    svg.setAttribute("width", "70"); // Tamaño reducido
+    svg.setAttribute("height", "70");
+  
+    // Definir el gradiente
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    linearGradient.setAttribute("id", "gradient");
+    linearGradient.setAttribute("x1", "0%");
+    linearGradient.setAttribute("y1", "0%");
+    linearGradient.setAttribute("x2", "100%");
+    linearGradient.setAttribute("y2", "100%");
+  
+    const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop1.setAttribute("offset", "0%");
+    stop1.setAttribute("stop-color", "#add8e6");
+    stop1.setAttribute("stop-opacity", "1");
+  
+    const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop2.setAttribute("offset", "100%");
+    stop2.setAttribute("stop-color", "#dda0dd");
+    stop2.setAttribute("stop-opacity", "1");
+  
+    linearGradient.appendChild(stop1);
+    linearGradient.appendChild(stop2);
+    defs.appendChild(linearGradient);
+  
+    // Crear el círculo de fondo
+    const circleBg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circleBg.setAttribute("class", "progress-ring__background");
+    circleBg.setAttribute("cx", "35"); // Centro ajustado
+    circleBg.setAttribute("cy", "35");
+    circleBg.setAttribute("r", "30"); // Radio reducido
+    circleBg.setAttribute("fill", "none");
+    circleBg.setAttribute("stroke-width", "5");
+    circleBg.setAttribute("stroke", "#ddd");
+  
+    // Crear el círculo de progreso
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("class", "progress-ring__circle");
+    circle.setAttribute("cx", "35");
+    circle.setAttribute("cy", "35");
+    circle.setAttribute("r", "30");
+    circle.setAttribute("fill", "none");
+    circle.setAttribute("stroke-width", "5");
+    circle.setAttribute("stroke", "url(#gradient)");
+    circle.setAttribute("stroke-linecap", "round");
+    circle.setAttribute("stroke-dasharray", "188.4"); // Circunferencia actualizada
+    circle.setAttribute("stroke-dashoffset", "188.4");
+  
+    svg.append(defs, circleBg, circle);
+    div.append(span, svg);
+  
+    // Actualizar el progreso
+    updateProgress(circle, rep, toRep, span);
+  
+    return div;
+  }
+  
+  function updateProgress(circle, step, totalSteps, textElement) {
+    const circumference = 2 * Math.PI * 30; // Circunferencia con radio ajustado
+    const offset = circumference - (step / totalSteps) * circumference;
+  
+    // Cambiar el color al azul turquesa cuando llegue al 100%
+    if (step === totalSteps) {
+      circle.classList.add("complete");
     } else {
-        span.style.borderColor = "green";
+      circle.classList.remove("complete");
     }
-    return span;
-}
+  
+    // Actualiza las propiedades SVG
+    circle.style.strokeDasharray = `${circumference}`;
+    circle.style.strokeDashoffset = offset;
+  
+    // Actualiza el texto
+    textElement.textContent = `${step}/${totalSteps}`;
+  }
