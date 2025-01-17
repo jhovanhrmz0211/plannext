@@ -80,12 +80,14 @@ export default function modal(objetivo) {
     const inputTotalRepeticiones = renderEtiqueta("input");
     inputTotalRepeticiones.type = "number";
     inputTotalRepeticiones.value = totalrepeticiones;
-    divRepeticiones.append(labelRepeticiones,inputRepeticiones,labelAl,selectPeriodo,labelDuracion,divmin)
+    divRepeticiones.append(labelRepeticiones,inputRepeticiones,labelAl,selectPeriodo,labelDuracion,divmin,labelTotalRepeticiones,inputTotalRepeticiones)
 
     // Botón de guardar
+    const divButtons = renderEtiqueta("div", "buttons")
     const botonGuardar = renderEtiqueta("button");
     botonGuardar.type = "button";
     botonGuardar.textContent = "Guardar";
+    divButtons.appendChild(botonGuardar);
 
     // Evento para guardar los cambios
     botonGuardar.addEventListener("click", () => {
@@ -117,13 +119,14 @@ export default function modal(objetivo) {
     botonCerrar.addEventListener("click", () => {
         document.body.removeChild(modalContainer); // Cerrar modal
     });
+    divButtons.appendChild(botonCerrar);
 
     // Añadir elementos al formulario
     formulario.append(
         divFecha,
         divRepeticiones,// a qui
         divRepeticiones,
-        botonGuardar, botonCerrar
+        divButtons
     );
 
     // Añadir elementos al modal
