@@ -21,3 +21,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+.modal-content input, select {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    border-radius: 8px;
+}
+button {
+    margin: 0 15px;
+}
