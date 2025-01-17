@@ -1,5 +1,6 @@
 import { eliminarMeta } from "../memoria/memoria.js";
 import { navegar } from "../navegar/navegar.js";
+import { barra } from "./barra.js";
 import modal from "./modalmeta.js";
 import renderEtiqueta from "./render.js";
 
@@ -18,13 +19,8 @@ listaMetas.forEach((meta) => {
     const small = renderEtiqueta("small");
     h3.textContent = meta.meta;
     p.textContent = `${meta.duracion} ${meta.selectDuracion} al ${small.textContent= meta.selectRepeticiones}`;
-    const button = renderEtiqueta("button");
-    button.textContent = "Eliminar";
-    button.addEventListener("click", () => {
-        console.log("Eliminar", meta.id);
-        eliminarMeta(meta.id);
-        navegar("lista");
-    });
+    const progreso = barra(meta.repeticiones, meta.totalrepeticiones);
+    
     divMeta.addEventListener("click", () => {
         // console.log("Editar", meta.id);
         // const ids = localStorage.setItem("id", meta.id);
@@ -33,7 +29,7 @@ listaMetas.forEach((meta) => {
         console.log(`Meta traida desde renderMetas${meta.id}`);
         modal(meta);
     });
-    divMeta.append(h3,p,button);
+    divMeta.append(h3,p,progreso);
 divMetas.appendChild(divMeta);
 });
 
