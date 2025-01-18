@@ -58,7 +58,13 @@ export default function formulario() {
     });
     navegar("lista");
   })
-  formulario.append(h2,labelMeta,inputMeta,divFecha,divRepeticiones,labelTotalRep,inputTotalRep, buttonGuardar);
+  const botonCerrar = renderEtiqueta("button")
+  botonCerrar.textContent = "Cerrar";
+  botonCerrar.addEventListener("click", (e) => {
+    e.preventDefault();
+    navegar("lista");
+  })
+  formulario.append(h2,labelMeta,inputMeta,divFecha,divRepeticiones,labelTotalRep,inputTotalRep, buttonGuardar, botonCerrar);
 
   return formulario;
 }

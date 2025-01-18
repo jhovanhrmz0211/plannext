@@ -1,4 +1,4 @@
-import { actualizarMeta } from "../memoria/memoria.js";
+import { actualizarMeta, eliminarMeta } from "../memoria/memoria.js";
 import { navegar } from "../navegar/navegar.js";
 import renderEtiqueta from "./render.js";
 import { crearInput, crearLabel } from "./renderLabIn.js";
@@ -111,6 +111,17 @@ export default function modal(objetivo) {
             alert("Error al actualizar la meta.");
         }
     });
+
+    // Botón de eliminar modal
+    const botonEliminar = renderEtiqueta("button");
+    botonEliminar.type = "button";
+    botonEliminar.textContent = "Eliminar";
+    botonEliminar.addEventListener("click", () => {
+        eliminarMeta(id);
+        navegar("lista")
+        document.body.removeChild(modalContainer);
+    })
+    divButtons.appendChild(botonEliminar);
 
     // Botón de cerrar modal
     const botonCerrar = renderEtiqueta("button");

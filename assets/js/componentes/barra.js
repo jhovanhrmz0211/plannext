@@ -6,12 +6,12 @@ export function barra(rep, toRep) {
     // Crear el texto del progreso
     const span = renderEtiqueta("span", "progress-text");
     span.textContent = `${rep}/${toRep}`;
+    const radius = 30; // Tamaño reducido
   
     // Crear el SVG
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("class", "progress-ring");
-    svg.setAttribute("width", "70"); // Tamaño reducido
-    svg.setAttribute("height", "70");
+    svg.setAttribute("viewBox", "0 0 70 70"); // Añade esta línea
   
     // Definir el gradiente
     const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
@@ -39,9 +39,9 @@ export function barra(rep, toRep) {
     // Crear el círculo de fondo
     const circleBg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circleBg.setAttribute("class", "progress-ring__background");
-    circleBg.setAttribute("cx", "35"); // Centro ajustado
-    circleBg.setAttribute("cy", "35");
-    circleBg.setAttribute("r", "30"); // Radio reducido
+    circleBg.setAttribute("cx", "25"); // Centro ajustado
+    circleBg.setAttribute("cy", "25");
+    circleBg.setAttribute("r", radius); // Radio reducido
     circleBg.setAttribute("fill", "none");
     circleBg.setAttribute("stroke-width", "5");
     circleBg.setAttribute("stroke", "#ddd");
@@ -49,9 +49,9 @@ export function barra(rep, toRep) {
     // Crear el círculo de progreso
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("class", "progress-ring__circle");
-    circle.setAttribute("cx", "35");
-    circle.setAttribute("cy", "35");
-    circle.setAttribute("r", "30");
+    circle.setAttribute("cx", "25");
+    circle.setAttribute("cy", "25");
+    circle.setAttribute("r", radius);
     circle.setAttribute("fill", "none");
     circle.setAttribute("stroke-width", "5");
     circle.setAttribute("stroke", "url(#gradient)");
@@ -69,7 +69,7 @@ export function barra(rep, toRep) {
   }
   
   function updateProgress(circle, step, totalSteps, textElement) {
-    const circumference = 2 * Math.PI * 30; // Circunferencia con radio ajustado
+    const circumference = 2 * Math.PI * 25; // Circunferencia con radio ajustado
     const offset = circumference - (step / totalSteps) * circumference;
   
     // Cambiar el color al azul turquesa cuando llegue al 100%

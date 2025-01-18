@@ -33,7 +33,7 @@ h1 {
 }
 img {
     display: none;
-    width: 2.4rem;
+    width: 1.4rem;
 }
 span {color: #9754CB;}
 
@@ -90,7 +90,8 @@ button:hover {
 }
 .main main {
     width: 78%;
-    background-color: #c69fe4;width: 78%;
+    background-color: #c69fe4;
+    width: 78%;
     height: 100%;
     margin: 0;
     padding: 1rem;
@@ -112,49 +113,20 @@ footer {
     text-align: center;
 }
 
-.progress-circle {
-    position: relative;
-    width: 70px; /* Reducido */
-    height: 70px;
-  }
-  
-  .progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.75rem; /* Tamaño del texto ajustado */
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .progress-ring {
-    transform: rotate(-90deg);
-  }
-  
-  .progress-ring__background,
-  .progress-ring__circle {
-    fill: none;
-    stroke-width: 5; /* Grosor reducido */
-    r: 20; /* Radio ajustado */
-    cx: 35;
-    cy: 35;
-  }
-  
-  .progress-ring__background {
-    stroke: #ddd;
-  }
-  
-  .progress-ring__circle {
-    stroke: url(#gradient);
-    stroke-linecap: round;
-    stroke-dasharray: 188.4; /* Circunferencia ajustada */
-    stroke-dashoffset: 188.4;
-    transition: stroke-dashoffset 0.3s ease-in-out, stroke 0.3s ease-in-out, filter 0.3s ease-in-out;
-  }
-  
-  .complete {
-    stroke: #40e0d0;
-    filter: drop-shadow(0 0 3px #40e0d0); /* Sombreado reducido */
-  }
-  
+/* Estilos del menú en pantallas pequeñas */
+@media (max-width: 750px) {
+    .main .menu {display: none;}
+    img {display: block;}
+    .main main{width: 100%;}
+    .main .hidden {
+        position: absolute;
+        top: 70px;
+        display: block;
+        width: 100%;
+        height: 77px;
+        background-color: #c69fe4;
+        background-image: none;
+        z-index: 1;
+    }
+    
+}
